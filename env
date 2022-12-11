@@ -1,0 +1,11 @@
+#Project settings
+
+#Browser options: chrome, firefox, edge
+BROWSER=chrome
+
+#env options: dev, qa, stage, pre-prod, prod
+ENV=qa
+
+QA_URL=https://www.booking.com/index.sr.html?aid=397594&label=gog235jc-1DCAEoggI46AdIM1gDaMEBiAEBmAEkuAEXyAEM2AED6AEB-AEDiAIBqAIDuAK5s8ecBsACAdICJGEyMTMzZWZhLTU5YjktNDA3Mi1iNzQ2LTBmMDQ5Mzk0NjY2ZdgCBOACAQ&sid=1cd5be53c22c37eb8074a7f3982598a5&keep_landing=1&sb_price_type=total&
+
+EXPLICIT_WAIT_TIME=10
