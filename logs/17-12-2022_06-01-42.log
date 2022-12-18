@@ -1,0 +1,7 @@
+2022-12-17 18:01:56.586 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-17 18:01:57.600 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2022-12-17 18:02:02.866 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']
+2022-12-17 18:04:05.367 [main] INFO  pages.BasePage - an error occurred
+2022-12-17 18:05:16.454 [main] INFO  pages.BasePage - an error occurred
+2022-12-17 18:05:36.661 [main] INFO  pages.BasePage - an error occurred
+2022-12-17 18:06:11.158 [main] INFO  pages.BasePage - an error occurred

@@ -1,22 +1,26 @@
 package tests;
 
 import core.DriverManager;
-import org.junit.Assert;
-import org.junit.Test;
+import listeners.RetryAnalyzer;
+import listeners.TestListener;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.ChooseConditionAndHotel;
 import pages.DefinitelyBook;
 import pages.Reservation;
 import pages.Search;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
+@Listeners(TestListener.class)
 public class BookingTest extends BaseTest{
     Search search;
     Reservation reservation;
     DefinitelyBook definitelyBook;
     ChooseConditionAndHotel chooseConditionAndHotel;
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void localSetUp(){
-
         search = new Search(driver);
         reservation = new Reservation(driver);
         definitelyBook = new DefinitelyBook(driver);
@@ -32,7 +36,8 @@ public class BookingTest extends BaseTest{
          definitelyBook.goToReservationForm();
          reservation.bookingField()
                     .goToFinalData();
-         Assert.assertTrue(reservation.matchesExpectedText(chooseConditionAndHotel.getPrice()));
+//         softAssert.assertTrue(reservation.matchesExpectedText(chooseConditionAndHotel.getPrice()));
+//        softAssert.assertAll();
     }
 
 

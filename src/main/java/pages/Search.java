@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 
 public class Search extends BasePage{
 
-    private By searchField= By.cssSelector(".xp__input-group.xp__search");
+    private By searchField= By.xpath("//span[@class='bui-u-sr-only']/following::input[@id='ss']");
 //    private By clearSearchFieldButton = By.xpath(".bk-icon.-streamline-close.sb-destination__clear-icon>path");
-    private By inputDestination = By.xpath("li[data-i=\"1\"]");
-    private By dateButton = By.cssSelector(".ed2ff9f661");
-    private By dateStart = By.xpath("tr>td[class=\"bui-calendar__date bui-calendar__date--selected\"]>span[aria-label=\"31 decembar 2022\"]");
-    private By dateEnd = By.xpath("tr>td[class=\"bui-calendar__date bui-calendar__date--selected\"]>span[aria-label=\"7 januar 2023\"]");
-    private By buttonSearch = By.className("js-sb-submit-text");
+    private By inputDestination = By.xpath("//li[@data-label='Kopaonik']");
+//    private By dateButton = By.xpath("//div[@class='xp__dates-inner']");
+    private By dateStart = By.xpath("//td[@data-date='2022-12-31']");
+    private By dateEnd = By.xpath("//td[@data-date='2023-01-07']");
+    private By buttonSearch = By.xpath("//button[@class='sb-searchbox__button ']");
 
 
     public Search(WebDriver driver) {
@@ -20,12 +20,12 @@ public class Search extends BasePage{
     }
 
     public Search searchHotel(){
-        clickOnElement(searchField);
-        hoverAndClick(inputDestination);
-        hoverAndClick(dateButton);
-        hoverAndClick(dateStart);
-        hoverAndClick(dateEnd);
-        clickOnElement(buttonSearch);
-        return this;
+          clickOnElement(searchField);
+          hoverAndClick(inputDestination);
+//          hoverAndClick(dateButton);
+          hoverAndClick(dateStart);
+          hoverAndClick(dateEnd);
+          clickOnElement(buttonSearch);
+          return this;
     }
 }

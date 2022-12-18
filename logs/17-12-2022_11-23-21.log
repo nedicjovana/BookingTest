@@ -1,0 +1,8 @@
+2022-12-17 23:23:33.650 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-17 23:23:33.708 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-17 23:23:35.239 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2022-12-17 23:23:38.416 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']
+2022-12-17 23:23:46.600 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-17 23:23:46.605 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-17 23:24:03.182 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-17 23:24:03.186 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']

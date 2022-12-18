@@ -1,19 +1,26 @@
 package pages;
 
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Utils;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
-
+    private static final Logger logger = LogManager.getLogger(BasePage.class.getName());
+//    private long waitTime = Long.parseLong(Utils.dotEnv().get("EXPLICIT_WAIT_TIME"));
 
     public BasePage(WebDriver driver){
         this.driver = driver;
@@ -24,6 +31,10 @@ public class BasePage {
         WebElement element = null;
         try {
             element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        }catch (StaleElementReferenceException st) {
+            logger.warn("Stale Element Exception occured.");
+            st.printStackTrace();
+            driver.findElement(locator);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -38,20 +49,24 @@ public class BasePage {
 
     protected void clickOnElement (By locator){
         JavascriptExecutor js = (JavascriptExecutor) driver;
+        logger.info("Searching: " + locator.toString()); //da me obavesti za sve elemente koje je pokusao da klikne
         try{
             wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
         }catch (ElementClickInterceptedException ex){
+            logger.warn("ElementClickInterceptedException occurred!");
             wait.until(ExpectedConditions.elementToBeClickable(locator));
             hoverAndClick(locator);
         }catch (StaleElementReferenceException se){
             getElement(locator).click();
+            logger.warn("Stale Element Exception occurred!");
         }catch (TimeoutException te){
             te.printStackTrace();
             WebElement element = getElement(locator);
             js.executeScript("arguments[0].click()", element);
+            logger.warn("TimeoutException occurred!");
         }catch (Exception e){
             e.printStackTrace();
-            System.out.println("Unable to click on element");
+            logger.error("FAILED - Unable to click on element " + locator.toString());
         }
     }
 
@@ -68,19 +83,19 @@ public class BasePage {
         js.executeScript("arguments[0].scrollIntoView()", element);
     }
 
-     public String clickOnRandomElementFromListRoomAndReturnPrice(By locatorRoom, By locatorPrice){
-        Random random = new Random();
+     public String clickOnRandomElementFromListRoomAndReturnPrice(By locatorHotel, By locatorButtonShowAvailability ,By locatorPrice)  {
+         Random random = new Random();
          String price;
-         List<WebElement> list = driver.findElements(locatorRoom);
+         List<WebElement> list = driver.findElements(locatorHotel);
          List<WebElement> list1 = new ArrayList<>();
          for (int i=0; i< list.size(); i++){
-            if (list.get(i).getText().contains("Doručak uključen u cenu")){
+            if (list.get(i).getText().contains("Breakfast included")){ //contains  mi kaze da mora da sadrzi bas ovakav niz stringova
                 list1.add(list.get(i));
             }
         }
          int randomIndex = random.nextInt(list1.size());
-         list1.get(randomIndex).click();
          price = list1.get(randomIndex).findElement(locatorPrice).getText();
+         list1.get(randomIndex).findElement(locatorButtonShowAvailability).click();
          return price;
      }
 
@@ -94,13 +109,6 @@ public class BasePage {
      public String getTextFromElement (By locator){
         return getElement(locator).getText();
      }
-
-
-
-
-
-
-
 
 
 

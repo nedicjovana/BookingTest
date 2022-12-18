@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class DefinitelyBook extends BasePage {
-    private By roomDropDown = By.id("hprt_nos_select_406549108_284983292_2_33_0");
-    public By buttonDefinitelyBook = By.cssSelector(".bui-button__text.js-reservation-button__text");
+    private By roomDropDown = By.xpath("//table[@id='hprt-table']/child::tbody/child::tr/td[5]/child::div[@class='hprt-block']/child::select[1]");
+    public By buttonDefinitelyBook = By.xpath("//div[@class='hprt-reservation-cta']/button[1]");
 
 
     public DefinitelyBook(WebDriver driver) {
@@ -14,7 +14,7 @@ public class DefinitelyBook extends BasePage {
     }
 
     private void selectRoom (){
-        scrollToMyElement(roomDropDown);
+//        scrollToMyElement(roomDropDown);
         Select select = new Select (getElement(roomDropDown));
         select.selectByValue("1");
     }
@@ -24,6 +24,8 @@ public class DefinitelyBook extends BasePage {
         clickOnElement(buttonDefinitelyBook);
         return this;
     }
+
+
 
 
 }

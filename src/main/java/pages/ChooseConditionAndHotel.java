@@ -6,10 +6,11 @@ import org.openqa.selenium.WebDriver;
 @Getter
 public class ChooseConditionAndHotel extends BasePage{
 
-    private By checkBreakfast = By.xpath("div>label[for=\"__bui-c17268-54\"]>span[class=\"bbdb949247\"]");
+    private By checkBreakfast = By.xpath("//div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']");
 //    private By chooseHotel = By.cssSelector(".b8b0793b0e");
-    private By takePrice = By.cssSelector(".fcab3ed991.fbd1d3018c");
-    private By hotels = By.cssSelector(".a826ba81c4.fe821aea6c.fa2f36ad22.afd256fc79.d08f526e0d.ed11e24d01.ef9845d4b3.da89aeb942");
+    private By takePrice = By.xpath("//div[@class='d4924c9e74']//span[@data-testid='price-and-discounted-price']");
+    private By hotels = By.xpath("//div[@class='d4924c9e74']//div[@data-testid='property-card']");
+    private By buttonShowAvailability = By.cssSelector("a[class*='fc63351294 a822bdf511']>span[class='e57ffa4eb5']");
 
     public String price;
 
@@ -26,6 +27,6 @@ public class ChooseConditionAndHotel extends BasePage{
 
     public void chooseHotel(){
 
-        price = clickOnRandomElementFromListRoomAndReturnPrice(hotels, takePrice);
+        price = clickOnRandomElementFromListRoomAndReturnPrice(hotels, buttonShowAvailability, takePrice);
     }
 }

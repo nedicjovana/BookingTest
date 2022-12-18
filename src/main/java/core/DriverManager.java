@@ -4,9 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import utils.Utils;
 
 public class DriverManager {
     private WebDriver driver;
+    private String browser = Utils.dotEnv().get("BROWSER", "chrome");
 
     private static DriverManager instance = new DriverManager();
     public static DriverManager getInstance(){
@@ -16,7 +18,7 @@ public class DriverManager {
 
     private DriverManager(){}
 
-    public WebDriver setDriver(String browser){
+    public WebDriver setDriver(){
         if(browser.equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
