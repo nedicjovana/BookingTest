@@ -1,0 +1,5 @@
+2022-12-18 20:54:04.493 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-18 20:54:04.544 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-18 20:54:05.744 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2022-12-18 20:54:08.449 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']
+2022-12-18 20:55:08.129 [main] ERROR listeners.TestListener - TEST METHOD: bookingHotelTest FAILED

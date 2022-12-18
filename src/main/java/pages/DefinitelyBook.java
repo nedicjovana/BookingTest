@@ -2,22 +2,35 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class DefinitelyBook extends BasePage {
-    private By roomDropDown = By.xpath("//table[@id='hprt-table']/child::tbody/child::tr/td[5]/child::div[@class='hprt-block']/child::select[1]");
-    public By buttonDefinitelyBook = By.xpath("//div[@class='hprt-reservation-cta']/button[1]");
+    private By roomDropDown = By.xpath("//select[@class='hprt-nos-select js-hprt-nos-select']");
+    public By buttonDefinitelyBook = By.xpath("//span[@class='bui-button__text js-reservation-button__text]/parent::button");
 
 
     public DefinitelyBook(WebDriver driver) {
         super(driver);
     }
 
-    private void selectRoom (){
+    private WebElement chooseRoom(By locator){
+        WebElement dropDown;
+        List<WebElement> list = driver.findElements(locator);
+        dropDown = list.get(0);
+        return dropDown;
+
+    }
+
+    private void selectRoom(){
 //        scrollToMyElement(roomDropDown);
-        Select select = new Select (getElement(roomDropDown));
+        Select select = new Select (chooseRoom(roomDropDown));
         select.selectByValue("1");
     }
+
 
     public DefinitelyBook goToReservationForm(){
         selectRoom();

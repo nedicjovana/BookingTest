@@ -10,7 +10,8 @@ public class ChooseConditionAndHotel extends BasePage{
 //    private By chooseHotel = By.cssSelector(".b8b0793b0e");
     private By takePrice = By.xpath("//div[@class='d4924c9e74']//span[@data-testid='price-and-discounted-price']");
     private By hotels = By.xpath("//div[@class='d4924c9e74']//div[@data-testid='property-card']");
-    private By buttonShowAvailability = By.cssSelector("a[class*='fc63351294 a822bdf511']>span[class='e57ffa4eb5']");
+//    private By buttonShowAvailability = By.cssSelector("a[class*='fc63351294 a822bdf511']>span[class='e57ffa4eb5']");
+    private By buttonImg = By.xpath("//a[contains(@href, 'from=searchresult')]/child::img[@data-testid='image']");
 
     public String price;
 
@@ -27,6 +28,6 @@ public class ChooseConditionAndHotel extends BasePage{
 
     public void chooseHotel(){
 
-        price = clickOnRandomElementFromListRoomAndReturnPrice(hotels, buttonShowAvailability, takePrice);
+        price = clickOnRandomElementFromListRoomAndReturnPrice(hotels, buttonImg, takePrice);
     }
 }
