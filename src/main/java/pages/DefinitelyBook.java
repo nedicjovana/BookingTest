@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class DefinitelyBook extends BasePage {
-    private By roomDropDown = By.xpath("//select[@class='hprt-nos-select js-hprt-nos-select']");
-    public By buttonDefinitelyBook = By.xpath("//span[@class='bui-button__text js-reservation-button__text]/parent::button");
+    private By roomDropDown = By.xpath("//select[@class='hprt-nos-select js-hprt-nos-select']/parent::div");
+    public By buttonDefinitelyBook = By.xpath("//div[@class='hprt-reservation-cta']/child::button");
 
 
     public DefinitelyBook(WebDriver driver) {
@@ -22,7 +22,6 @@ public class DefinitelyBook extends BasePage {
         List<WebElement> list = driver.findElements(locator);
         dropDown = list.get(0);
         return dropDown;
-
     }
 
     private void selectRoom(){

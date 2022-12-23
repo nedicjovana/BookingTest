@@ -3,6 +3,13 @@ package pages;
 import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 @Getter
 public class ChooseConditionAndHotel extends BasePage{
 
@@ -26,8 +33,38 @@ public class ChooseConditionAndHotel extends BasePage{
         return this;
     }
 
-    public void chooseHotel(){
-
-        price = clickOnRandomElementFromListRoomAndReturnPrice(hotels, buttonImg, takePrice);
+    public List<WebElement> listOfBreakfastOnlyHotel() {
+        List<WebElement> list = driver.findElements(hotels);
+        List<WebElement> list1 = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getText().contains("Breakfast included")) { //contains  mi kaze da mora da sadrzi bas ovakav niz stringova
+                    list1.add(list.get(i));
+                }
+            }
+        return list1;
     }
+
+    public int chooseRandomElementFromHotelLIst() {
+        try{
+            Thread.sleep(3000);
+        }catch (InterruptedException exc){
+            exc.printStackTrace();
+        }
+        Random random = new Random();
+        List<WebElement> list = listOfBreakfastOnlyHotel();
+        int randomIndex = random.nextInt(list.size());
+        return randomIndex;
+    }
+
+    public  String saveRoomPriceAndClickOnHotel (){
+        int index = chooseRandomElementFromHotelLIst();
+        String price;
+        List<WebElement> list = listOfBreakfastOnlyHotel();
+        price= list.get(index).findElement(takePrice).getText();
+        clickOnWebElement(list.get(index),buttonImg);
+        return price;
+    }
+
+
+
 }

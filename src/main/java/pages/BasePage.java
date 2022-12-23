@@ -70,6 +70,62 @@ public class BasePage {
         }
     }
 
+    protected WebElement getWebElement (WebElement webElement, By locator){
+        WebElement element = null;
+        try {
+            element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        }catch (StaleElementReferenceException st) {
+            logger.warn("Stale Element Exception occured.");
+            st.printStackTrace();
+            webElement.findElement(locator);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return element;
+    }
+    protected void clickOnWebElement (WebElement element, By locator){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        }catch (ElementClickInterceptedException ex){
+            logger.warn("ElementClickInterceptedException occurred!");
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            getWebElement(element, locator).click();
+        }catch (StaleElementReferenceException se){
+
+            getWebElement(element, locator).click();
+            logger.warn("Stale Element Exception occurred!");
+        }catch (TimeoutException te){
+            te.printStackTrace();
+            WebElement element1 =  getWebElement(element, locator);
+            js.executeScript("arguments[0].click()", element1);
+            logger.warn("TimeoutException occurred!");
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("FAILED - Unable to click on element ");
+        }
+    }
+
+
+
+//    protected boolean clickOnWebElement (WebElement webElement, By locator){
+//        logger.info("Searching: " + locator.toString());
+//        boolean result = false;
+//        int repeat = 0;
+//        while (repeat < 4) {
+//            logger.info("pokusaj" + repeat);
+//            try {
+//                webElement.findElement(locator).click();
+//                result = true;
+//                break;
+//            } catch (StaleElementReferenceException exc) {
+//                exc.printStackTrace();
+//            }
+//            repeat++;
+//        }
+//        return result;
+//    }
+
     protected void hoverAndClick(By locator) {
         new Actions(driver)
                 .moveToElement(getElement(locator))
@@ -83,21 +139,7 @@ public class BasePage {
         js.executeScript("arguments[0].scrollIntoView()", element);
     }
 
-     public String clickOnRandomElementFromListRoomAndReturnPrice(By locatorHotel, By locatorButtonShowAvailability ,By locatorPrice)  {
-         Random random = new Random();
-         String price;
-         List<WebElement> list = driver.findElements(locatorHotel);
-         List<WebElement> list1 = new ArrayList<>();
-         for (int i=0; i< list.size(); i++){
-            if (list.get(i).getText().contains("Breakfast included")){ //contains  mi kaze da mora da sadrzi bas ovakav niz stringova
-                list1.add(list.get(i));
-            }
-        }
-         int randomIndex = random.nextInt(list1.size());
-         price = list1.get(randomIndex).findElement(locatorPrice).getText();
-         list1.get(randomIndex).findElement(locatorButtonShowAvailability).click();
-         return price;
-     }
+
 
 //     public String getFirstPrice (By locatorPrice){
 //         String price;
@@ -107,6 +149,7 @@ public class BasePage {
 //         return price;
 //     }
      public String getTextFromElement (By locator){
+
         return getElement(locator).getText();
      }
 

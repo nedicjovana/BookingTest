@@ -32,7 +32,7 @@ public class BookingTest extends BaseTest{
     public void bookingHotelTest(){
          search.searchHotel();
          chooseConditionAndHotel.chooseCondition()
-                                .chooseHotel();
+                                .saveRoomPriceAndClickOnHotel();
          definitelyBook.goToReservationForm();
          reservation.bookingField()
                     .goToFinalData();
