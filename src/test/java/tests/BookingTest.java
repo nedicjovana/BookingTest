@@ -4,6 +4,7 @@ import core.DriverManager;
 import listeners.RetryAnalyzer;
 import listeners.TestListener;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ChooseConditionAndHotel;
@@ -12,6 +13,8 @@ import pages.Reservation;
 import pages.Search;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+
+import java.util.ArrayList;
 
 @Listeners(TestListener.class)
 public class BookingTest extends BaseTest{
@@ -33,11 +36,13 @@ public class BookingTest extends BaseTest{
          search.searchHotel();
          chooseConditionAndHotel.chooseCondition()
                                 .saveRoomPriceAndClickOnHotel();
-         definitelyBook.goToReservationForm();
-         reservation.bookingField()
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        definitelyBook.goToReservationForm();
+        reservation.bookingField()
                     .goToFinalData();
-//         softAssert.assertTrue(reservation.matchesExpectedText(chooseConditionAndHotel.getPrice()));
-//        softAssert.assertAll();
+        softAssert.assertTrue(reservation.matchesExpectedText(chooseConditionAndHotel.getPrice()));
+
     }
 
 

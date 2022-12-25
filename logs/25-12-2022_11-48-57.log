@@ -1,0 +1,8 @@
+2022-12-25 23:49:07.904 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-25 23:49:07.964 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-25 23:49:09.556 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2022-12-25 23:49:13.093 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']
+2022-12-25 23:49:26.084 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@class='hprt-reservation-cta']/child::button
+2022-12-25 23:49:34.356 [main] INFO  pages.BasePage - Searching: By.cssSelector: .bui-button__text.js-button__text
+2022-12-25 23:49:39.400 [main] ERROR pages.Reservation - FAILED -Text found in elementRSD 200,358.25 *DOESN'T MATCH expected text: RSD 143,949
+2022-12-25 23:49:39.460 [main] ERROR listeners.TestListener - TEST METHOD: bookingHotelTest FAILED

@@ -1,0 +1,7 @@
+2022-12-25 23:40:18.709 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-25 23:40:18.768 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-25 23:40:20.179 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2022-12-25 23:40:24.013 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']
+2022-12-25 23:40:36.278 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@class='hprt-reservation-cta']/child::button
+2022-12-25 23:40:44.468 [main] INFO  pages.BasePage - Searching: By.cssSelector: .bui-button__text.js-button__text
+2022-12-25 23:40:49.368 [main] INFO  listeners.TestListener - TEST METHOD: bookingHotelTest PASSED

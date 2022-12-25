@@ -1,0 +1,9 @@
+2022-12-26 00:12:33.258 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-26 00:12:33.320 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-26 00:12:34.970 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2022-12-26 00:12:39.172 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']
+2022-12-26 00:13:42.513 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@class='hprt-reservation-cta']/child::button
+2022-12-26 00:13:53.376 [main] WARN  pages.BasePage - TimeoutException occurred!
+2022-12-26 00:13:57.887 [main] INFO  pages.BasePage - Searching: By.cssSelector: .bui-button__text.js-button__text
+2022-12-26 00:14:53.585 [main] ERROR pages.Reservation - FAILED -Text found in elementRSD 423,121.91 *DOESN'T MATCH expected text: RSD 156,467
+2022-12-26 00:15:03.608 [main] INFO  listeners.TestListener - TEST METHOD: bookingHotelTest PASSED

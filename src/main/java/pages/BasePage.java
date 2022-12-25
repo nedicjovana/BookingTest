@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static utils.Utils.dotEnv;
+
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
@@ -102,7 +104,7 @@ public class BasePage {
             logger.warn("TimeoutException occurred!");
         }catch (Exception e){
             e.printStackTrace();
-            logger.error("FAILED - Unable to click on element ");
+            logger.error("FAILED - Unable to click on element " + locator.toString());
         }
     }
 
@@ -152,6 +154,7 @@ public class BasePage {
 
         return getElement(locator).getText();
      }
+
 
 
 

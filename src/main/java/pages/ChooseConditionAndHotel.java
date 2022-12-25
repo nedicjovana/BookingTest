@@ -4,9 +4,11 @@ import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -56,14 +58,18 @@ public class ChooseConditionAndHotel extends BasePage{
         return randomIndex;
     }
 
-    public  String saveRoomPriceAndClickOnHotel (){
+    public  void saveRoomPriceAndClickOnHotel (){
         int index = chooseRandomElementFromHotelLIst();
-        String price;
         List<WebElement> list = listOfBreakfastOnlyHotel();
-        price= list.get(index).findElement(takePrice).getText();
+
+        String subPrice= list.get(index).findElement(takePrice).getText();
+        String[] elements = subPrice.split(" ");
+        List<String> list1 = Arrays.asList(elements);
+        price = list1.get(1);
         clickOnWebElement(list.get(index),buttonImg);
-        return price;
+
     }
+
 
 
 

@@ -54,18 +54,15 @@ public class Reservation extends BasePage {
     }
 
     public boolean matchesExpectedText(String expectedResult) {
-
         String actualResult = convertPriceStringToList(totalPrice);
         if (expectedResult.equals(actualResult)) {
-           logger.info("PASSED - Text found in element" + getElement(totalPrice).getText() + "MATCHES expected text: " + expectedResult);
+           logger.info("PASSED - Text found in element " + actualResult + " MATCHES expected text: " + expectedResult);
             return true;
         } else {
-            logger.error("FAILED -Text found in element" + getElement(totalPrice).getText() + "DOESN'T MATCH expected text: " + expectedResult);
+            logger.error("FAILED -Text found in element " + actualResult + " DOESN'T MATCH expected text: " + expectedResult);
         }
         return false;
     }
-
-
 }
 
 

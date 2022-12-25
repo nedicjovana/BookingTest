@@ -1,0 +1,5 @@
+2022-12-25 18:55:52.566 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2022-12-25 18:55:52.636 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2022-12-25 18:55:54.001 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2022-12-25 18:55:54.072 [main] WARN  pages.BasePage - ElementClickInterceptedException occurred!
+2022-12-25 18:55:59.574 [main] ERROR listeners.TestListener - TEST METHOD: bookingHotelTest FAILED
