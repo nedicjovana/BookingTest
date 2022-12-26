@@ -23,6 +23,7 @@ public class ChooseConditionAndHotel extends BasePage{
     private By buttonImg = By.xpath("//a[contains(@href, 'from=searchresult')]/child::img[@data-testid='image']");
 
     public String price;
+    List<WebElement> hotelsList;
 
 
     public ChooseConditionAndHotel(WebDriver driver) {
@@ -35,15 +36,14 @@ public class ChooseConditionAndHotel extends BasePage{
         return this;
     }
 
-    public List<WebElement> listOfBreakfastOnlyHotel() {
+    public void listOfBreakfastOnlyHotel() {
         List<WebElement> list = driver.findElements(hotels);
-        List<WebElement> list1 = new ArrayList<>();
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getText().contains("Breakfast included")) { //contains  mi kaze da mora da sadrzi bas ovakav niz stringova
-                    list1.add(list.get(i));
-                }
+        hotelsList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getText().contains("Breakfast included")) { //contains  mi kaze da mora da sadrzi bas ovakav niz stringova
+                hotelsList.add(list.get(i));
             }
-        return list1;
+        }
     }
 
     public int chooseRandomElementFromHotelLIst() {
@@ -53,20 +53,18 @@ public class ChooseConditionAndHotel extends BasePage{
             exc.printStackTrace();
         }
         Random random = new Random();
-        List<WebElement> list = listOfBreakfastOnlyHotel();
-        int randomIndex = random.nextInt(list.size());
+        listOfBreakfastOnlyHotel();
+        int randomIndex = random.nextInt(hotelsList.size());
         return randomIndex;
     }
 
     public  void saveRoomPriceAndClickOnHotel (){
         int index = chooseRandomElementFromHotelLIst();
-        List<WebElement> list = listOfBreakfastOnlyHotel();
-
-        String subPrice= list.get(index).findElement(takePrice).getText();
+        String subPrice= hotelsList.get(index).findElement(takePrice).getText();
         String[] elements = subPrice.split(" ");
         List<String> list1 = Arrays.asList(elements);
         price = list1.get(1);
-        clickOnWebElement(list.get(index),buttonImg);
+        clickOnWebElement(hotelsList.get(index),buttonImg);
 
     }
 
