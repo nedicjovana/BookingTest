@@ -9,8 +9,8 @@ public class Search extends BasePage{
 //    private By clearSearchFieldButton = By.xpath(".bk-icon.-streamline-close.sb-destination__clear-icon>path");
     private By inputDestination = By.xpath("//li[@data-label='Kopaonik']");
 //    private By dateButton = By.xpath("//div[@class='xp__dates-inner']");
-    private By dateStart = By.xpath("//td[@data-date='2022-12-31']");
-    private By dateEnd = By.xpath("//td[@data-date='2023-01-07']");
+    private By dateStart = By.xpath("//td[@data-date='2023-01-31']");
+    private By dateEnd = By.xpath("//td[@data-date='2023-02-07']");
     private By buttonSearch = By.xpath("//button[@class='sb-searchbox__button ']");
 
 

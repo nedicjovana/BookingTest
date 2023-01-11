@@ -1,0 +1,4 @@
+2023-01-11 21:26:08.430 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2023-01-11 21:26:08.486 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2023-01-11 21:26:09.909 [main] INFO  pages.BasePage - Searching: By.xpath: //button[@class='sb-searchbox__button ']
+2023-01-11 21:26:12.865 [main] INFO  pages.BasePage - Searching: By.xpath: //div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']

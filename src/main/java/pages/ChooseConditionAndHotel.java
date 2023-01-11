@@ -17,13 +17,16 @@ public class ChooseConditionAndHotel extends BasePage{
 
     private By checkBreakfast = By.xpath("//div[@id='left']//div[@class='ffa9856b86 ad9a06523f']//div[@data-filters-item='mealplan:mealplan=1']");
 //    private By chooseHotel = By.cssSelector(".b8b0793b0e");
-    private By takePrice = By.xpath("//div[@class='d4924c9e74']//span[@data-testid='price-and-discounted-price']");
-    private By hotels = By.xpath("//div[@class='d4924c9e74']//div[@data-testid='property-card']");
+//    private By takePrice = By.xpath("//div[@class='d4924c9e74']//span[@data-testid='price-and-discounted-price']");
+    private By takePrice = By.xpath("//div[@class='d20f4628d0']//div[text()='Breakfast included']//following::div[@data-testid='availability-rate-information'][1]//span[@data-testid='price-and-discounted-price']");
+//    private By hotels = By.xpath("//div[@class='d4924c9e74']//div[@data-testid='property-card']");
+    private By hotels = By.xpath("//div[@class='d20f4628d0']//div[text()='Breakfast included']//following::a[1]//img[@data-testid='image']");
 //    private By buttonShowAvailability = By.cssSelector("a[class*='fc63351294 a822bdf511']>span[class='e57ffa4eb5']");
     private By buttonImg = By.xpath("//a[contains(@href, 'from=searchresult')]/child::img[@data-testid='image']");
 
     public String price;
     List<WebElement> hotelsList;
+
 
 
     public ChooseConditionAndHotel(WebDriver driver) {
@@ -36,15 +39,15 @@ public class ChooseConditionAndHotel extends BasePage{
         return this;
     }
 
-    public void listOfBreakfastOnlyHotel() {
-        List<WebElement> list = driver.findElements(hotels);
-        hotelsList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getText().contains("Breakfast included")) { //contains  mi kaze da mora da sadrzi bas ovakav niz stringova
-                hotelsList.add(list.get(i));
-            }
-        }
-    }
+//    public void listOfBreakfastOnlyHotel() {
+//        List<WebElement> list = driver.findElements(hotels);
+//        hotelsList = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).getText().contains("Breakfast included")) { //contains  mi kaze da mora da sadrzi bas ovakav niz stringova
+//                hotelsList.add(list.get(i));
+//            }
+//        }
+//    }
 
     public int chooseRandomElementFromHotelLIst() {
         try{
@@ -53,14 +56,15 @@ public class ChooseConditionAndHotel extends BasePage{
             exc.printStackTrace();
         }
         Random random = new Random();
-        listOfBreakfastOnlyHotel();
+        hotelsList = driver.findElements(hotels);
         int randomIndex = random.nextInt(hotelsList.size());
         return randomIndex;
     }
 
     public  void saveRoomPriceAndClickOnHotel (){
         int index = chooseRandomElementFromHotelLIst();
-        String subPrice= hotelsList.get(index).findElement(takePrice).getText();
+        List<WebElement> priceList = driver.findElements(takePrice);
+        String subPrice= priceList.get(index).getText();
         String[] elements = subPrice.split(" ");
         List<String> list1 = Arrays.asList(elements);
         price = list1.get(1);

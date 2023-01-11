@@ -1,0 +1,3 @@
+2023-01-11 20:51:50.955 [main] INFO  listeners.TestListener - STARTING TEST METHOD: bookingHotelTest
+2023-01-11 20:51:50.997 [main] INFO  pages.BasePage - Searching: By.xpath: //span[@class='bui-u-sr-only']/following::input[@id='ss']
+2023-01-11 20:52:01.676 [main] ERROR listeners.TestListener - TEST METHOD: bookingHotelTest FAILED
